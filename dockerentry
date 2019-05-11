@@ -1,0 +1,9 @@
+#!/bin/ash
+mkdir /dev/net &&
+mknod /dev/net/tun c 10 200 &&
+openvpn /vpn/config/config.ovpn > /vpn/log &
+until grep "Initialization Sequence Completed" /vpn/log; do sleep 0.2 ; done &&
+echo nameserver $DNS > /etc/resolv.conf &&
+rm /vpn/log &&
+touch /vpn/up &&
+cat
