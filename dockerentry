@@ -1,9 +1,9 @@
 #!/bin/ash
 if [ ! -d /dev/net ]; then mkdir /dev/net; fi &&
-if [ ! -f /dev/net/tun ]; then mknod /dev/net/tun c 10 200; fi &&
+if [ ! -c /dev/net/tun ]; then mknod /dev/net/tun c 10 200; fi &&
 cd /stunnel/config &&
 stunnel /stunnel/config/config.ssl &> /stunnel/log &
 until grep "Configuration successful" /stunnel/log; do sleep 0.2 ; done &&
 rm /stunnel/log &&
 touch /stunnel/up &&
-cat
+while :; do sleep 2073600; done
