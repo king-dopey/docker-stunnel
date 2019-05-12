@@ -12,10 +12,12 @@ Usage
 -----
 
 First, start the stunnel container. Your ssl and crt file must be available at the
-`/stunnel/config/config.ssl` path in the container:
+`/stunnel/config/config.ssl` path in the container. Note that to connect using anything
+other than the host's localhost, you must add the network to advertise too:
 
     docker run \
       --cap-add NET_ADMIN \
+      --e LOCAL_NET=192.168.1.0/24 \
       --volume /home/me/stunnelConfiguration/:/stunnel/config \
       --name stunnel dheaps/stunnel:latest
 
