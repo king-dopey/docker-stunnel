@@ -1,7 +1,7 @@
 #!/bin/ash
 if [ ! -d /dev/net ]; then mkdir /dev/net; fi &&
 if [ ! -c /dev/net/tun ]; then mknod /dev/net/tun c 10 200; fi &&
-if [ ! -z ${LOCAL_LAN+x} ]; then ip route add $LOCAL_LAN via `/sbin/ip route|awk '/default/ { print $3 }'` dev `/sbin/ip route|awk '/default/ { print $5 }'` &&
+if [ ! -z ${LOCAL_LAN+x} ]; then ip route add $LOCAL_LAN via `/sbin/ip route|awk '/default/ { print $3 }'` dev `/sbin/ip route|awk '/default/ { print $5 }'`; fi &&
 cd /stunnel/config &&
 stunnel /stunnel/config/config.ssl &> /stunnel/log &
 until grep "Configuration successful" /stunnel/log; do sleep 0.2 ; done &&
