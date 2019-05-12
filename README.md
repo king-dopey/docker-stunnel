@@ -1,4 +1,4 @@
-docker-openvpn-client
+docker-stunnel
 =====================
 
 > Complexity is the worst enemy of security.
