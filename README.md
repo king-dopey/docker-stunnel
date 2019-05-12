@@ -5,7 +5,7 @@ docker-openvpn-client
 >
 > --- Bruce Schneier
 
-A simple docker stunnel client. It opens an stunnel connection and routes the traffic
+A simple docker SSL tunnel client. It opens an stunnel connection and routes the traffic
 of containers through the tunnel.
 
 Usage
@@ -30,8 +30,8 @@ container's network stack.
 
 For more advanced use cases, a `docker-compose.yml` file is recommended. See the
 [`examples/`][examples] folder to see how to expose a service attached to the
-VPN container and how to configure a firewall so only outbound traffic to the
-VPN is allowed.
+SSL tunnel container and how to configure a firewall so only outbound traffic through 
+the tunnel is allowed.
 
 [examples]: ./examples
 [docker-hub]: https://cloud.docker.com/repository/docker/dheaps/stunnel/
