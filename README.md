@@ -5,26 +5,26 @@ docker-openvpn-client
 >
 > --- Bruce Schneier
 
-A simple docker openvpn client. It opens a VPN connection and routes the traffic
+A simple docker stunnel client. It opens an stunnel connection and routes the traffic
 of containers through the tunnel.
 
 Usage
 -----
 
-First, start the vpn container. Your ovpn file must be available at the
-`/vpn/config/config.ovpn` path in the container:
+First, start the stunnel container. Your ssl and crt file must be available at the
+`/stunnel/config/config.ssl` path in the container:
 
     docker run \
       --cap-add NET_ADMIN \
-      --volume /home/me/vpnConfiguration/:/vpn/config \
-      --name vpn
+      --volume /home/me/stunnelConfiguration/:/stunnel/config \
+      --name stunnel dheaps/stunnel:latest
 
-Now, use the VPN tunnel by launching a container with the `container:<vpn
-container name>"`. This replaces the container's network stack with the vpn
+Now, use the SSL tunnel by launching a container with the `container:<stunnel
+container name>"`. This replaces the container's network stack with the stunnel
 container's network stack.
 
     docker run \
-      --network "container:vpn" \
+      --network "container:stunnel" \
       -it \
       alpine
 
@@ -34,4 +34,4 @@ VPN container and how to configure a firewall so only outbound traffic to the
 VPN is allowed.
 
 [examples]: ./examples
-[docker-hub]: https://cloud.docker.com/repository/docker/dheaps/openvpn-client/
+[docker-hub]: https://cloud.docker.com/repository/docker/dheaps/stunnel/
