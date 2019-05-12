@@ -17,7 +17,7 @@ other than the host's localhost, you must add the network to advertise too:
 
     docker run \
       --cap-add NET_ADMIN \
-      --e LOCAL_NET=192.168.1.0/24 \
+      --e LOCAL_LAN=192.168.1.0/24 \
       --volume /home/me/stunnelConfiguration/:/stunnel/config \
       --name stunnel dheaps/stunnel:latest
 
